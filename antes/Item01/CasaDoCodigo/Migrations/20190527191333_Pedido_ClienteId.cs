@@ -6,18 +6,18 @@ namespace CasaDoCodigo.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "ClienteId",
-                table: "Pedido",
-                nullable: false,
-                defaultValue: "");
+            //migrationBuilder.AddColumn<string>(
+            //    name: "ClienteId",
+            //    table: "Pedido",
+            //    nullable: false,
+            //    defaultValue: "");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "ClienteId",
-                table: "Pedido");
+            //migrationBuilder.DropColumn(
+            //    name: "ClienteId",
+            //    table: "Pedido");
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.489
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item01 - Criando Web API de Relatório", "Item01 - Criando Web API de Relatório", "{89428584-1848-4595-8429-B24EDC7BA556}"
 EndProject
@@ -102,6 +102,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasaDoCodigo.IdentityServer", "antes\Item06\CasaDoCodigo.IdentityServer\CasaDoCodigo.IdentityServer.csproj", "{F2DDCA94-4183-442B-B721-809708FF9F60}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasaDoCodigo.RelatorioWebAPI", "antes\Item06\CasaDoCodigo.RelatorioWebAPI\CasaDoCodigo.RelatorioWebAPI.csproj", "{7232FBDB-AE6B-4D5C-B895-4CE3196D8CE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasaDoCodigo.RelatorioWebApi1", "antes\Item01\CasaDoCodigo.RelatorioWebApi1\CasaDoCodigo.RelatorioWebApi1.csproj", "{94ACCFDC-6299-477A-BB97-4DBE301E0C44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -245,6 +247,10 @@ Global
 		{7232FBDB-AE6B-4D5C-B895-4CE3196D8CE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7232FBDB-AE6B-4D5C-B895-4CE3196D8CE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7232FBDB-AE6B-4D5C-B895-4CE3196D8CE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94ACCFDC-6299-477A-BB97-4DBE301E0C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94ACCFDC-6299-477A-BB97-4DBE301E0C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94ACCFDC-6299-477A-BB97-4DBE301E0C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94ACCFDC-6299-477A-BB97-4DBE301E0C44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -298,6 +304,7 @@ Global
 		{01B1292C-06B4-4D39-B6FD-FDA348B748CC} = {A06B4A50-6909-428B-BE63-69BCBA22B57B}
 		{F2DDCA94-4183-442B-B721-809708FF9F60} = {A06B4A50-6909-428B-BE63-69BCBA22B57B}
 		{7232FBDB-AE6B-4D5C-B895-4CE3196D8CE4} = {A06B4A50-6909-428B-BE63-69BCBA22B57B}
+		{94ACCFDC-6299-477A-BB97-4DBE301E0C44} = {7385F338-42FF-4F72-8409-F984205D01BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {398437CA-EB7F-4F16-ACEE-7A7D1534AD08}
