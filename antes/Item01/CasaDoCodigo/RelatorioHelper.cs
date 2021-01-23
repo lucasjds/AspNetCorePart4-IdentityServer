@@ -18,26 +18,27 @@ namespace CasaDoCodigo
   {
     private const string RelativeUri = "api/relatorio";
     private readonly IConfiguration configuration;
-    public RelatorioHelper(IConfiguration configuration)
+    private readonly HttpClient httpClient;
+    public RelatorioHelper(IConfiguration configuration, HttpClient httpClient)
     {
       this.configuration = configuration;
+      this.httpClient = httpClient;
     }
     public async Task GerarRelatorio(Pedido pedido)
     {
       string linhaRelatorio = await GetLinhaRelatorio(pedido);
-      using (HttpClient httpClient = new HttpClient())
-      {
-        var json = JsonConvert.SerializeObject(linhaRelatorio);
-        HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-        Uri baseUri = new Uri(configuration["RelatorioWebAPIURL"]);
-        Uri uri = new Uri(baseUri , RelativeUri);
-        HttpResponseMessage httpResponseMessage = await httpClient.PostAsync(uri, httpContent);
 
-        if (!httpResponseMessage.IsSuccessStatusCode)
-        {
-          throw new ApplicationException(httpResponseMessage.ReasonPhrase);
-        }
+      var json = JsonConvert.SerializeObject(linhaRelatorio);
+      HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+      Uri baseUri = new Uri(configuration["RelatorioWebAPIURL"]);
+      Uri uri = new Uri(baseUri, RelativeUri);
+      HttpResponseMessage httpResponseMessage = await httpClient.PostAsync(uri, httpContent);
+
+      if (!httpResponseMessage.IsSuccessStatusCode)
+      {
+        throw new ApplicationException(httpResponseMessage.ReasonPhrase);
       }
+
 
 
     }
