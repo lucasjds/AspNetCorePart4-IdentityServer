@@ -1,5 +1,6 @@
 ﻿using CasaDoCodigo.Models;
 using Newtonsoft.Json;
+using System;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -21,6 +22,8 @@ namespace CasaDoCodigo
       {
         var json = JsonConvert.SerializeObject(linhaRelatorio);
         HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+        Uri uri = new Uri("http://localhost:5002/api/relatorio");
+        await httpClient.PostAsync(uri, httpContent);
       }
 
 
