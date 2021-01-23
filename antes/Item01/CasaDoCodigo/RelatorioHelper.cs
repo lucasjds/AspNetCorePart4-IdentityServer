@@ -1,4 +1,5 @@
 ﻿using CasaDoCodigo.Models;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
 using System.Linq;
@@ -15,6 +16,12 @@ namespace CasaDoCodigo
 
   public class RelatorioHelper : IRelatorioHelper
   {
+    private const string RelativeUri = "api/relatorio";
+    private readonly IConfiguration configuration;
+    public RelatorioHelper(IConfiguration configuration)
+    {
+      this.configuration = configuration;
+    }
     public async Task GerarRelatorio(Pedido pedido)
     {
       string linhaRelatorio = await GetLinhaRelatorio(pedido);
@@ -22,8 +29,14 @@ namespace CasaDoCodigo
       {
         var json = JsonConvert.SerializeObject(linhaRelatorio);
         HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-        Uri uri = new Uri("http://localhost:5002/api/relatorio");
-        await httpClient.PostAsync(uri, httpContent);
+        Uri baseUri = new Uri(configuration["RelatorioWebAPIURL"]);
+        Uri uri = new Uri(baseUri , RelativeUri);
+        HttpResponseMessage httpResponseMessage = await httpClient.PostAsync(uri, httpContent);
+
+        if (!httpResponseMessage.IsSuccessStatusCode)
+        {
+          throw new ApplicationException(httpResponseMessage.ReasonPhrase);
+        }
       }
 
 
