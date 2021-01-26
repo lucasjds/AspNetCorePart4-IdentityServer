@@ -102,7 +102,10 @@ namespace CasaDoCodigo
       //        options.ClientId = Configuration["ExternalLogin:Google:ClientId"];
       //        options.ClientSecret = Configuration["ExternalLogin:Google:ClientSecret"];
       //    });
-
+      services.AddAuthentication(options => {
+        options.DefaultScheme = "Cookies";
+        options.DefaultChallengeScheme = "OpenIdConnect";
+      });
       services.AddHttpClient<IRelatorioHelper, RelatorioHelper>();
     }
 
