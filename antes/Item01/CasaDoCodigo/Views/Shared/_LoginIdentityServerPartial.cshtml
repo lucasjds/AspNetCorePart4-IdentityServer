@@ -1,0 +1,14 @@
+﻿@{ 
+  string nomeUsuario = "";
+
+
+}
+
+@if (!string.IsNullOrEmpty(nomeUsuario))
+{
+  <div>Ola, @nomeUsuario<a>sair</a></div>
+}
+else
+{
+  <div>Nenhum usuario concectado<a>entrar</a></div>
+}
