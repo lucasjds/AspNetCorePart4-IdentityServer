@@ -3,33 +3,35 @@
 
 
 using IdentityServer4.Models;
+using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 
 namespace CasaDoCodigo.IdentityServer
 {
-    public static class Config
+  public static class Config
+  {
+    public static IEnumerable<IdentityResource> GetIdentityResources()
     {
-        public static IEnumerable<IdentityResource> GetIdentityResources()
-        {
-            return new IdentityResource[]
-            {
+      return new IdentityResource[]
+      {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
-            };
-        }
+      };
+    }
 
-        public static IEnumerable<ApiResource> GetApis()
-        {
-            return new ApiResource[]
-            {
+    public static IEnumerable<ApiResource> GetApis()
+    {
+      return new ApiResource[]
+      {
                 new ApiResource("api1", "My API #1")
-            };
-        }
+      };
+    }
 
-        public static IEnumerable<Client> GetClients()
-        {
-            return new[]
-            {
+    public static IEnumerable<Client> GetClients(IConfiguration configuration)
+    {
+      string casaDoCodigoUrl = configuration["CasaDoCodigoMvcUrl"];
+      return new[]
+      {
                 // client credentials flow client
                 new Client
                 {
@@ -51,9 +53,9 @@ namespace CasaDoCodigo.IdentityServer
                     AllowedGrantTypes = GrantTypes.HybridAndClientCredentials,
                     ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },
 
-                    RedirectUris = { "http://localhost:5001/signin-oidc" },
-                    FrontChannelLogoutUri = "http://localhost:5001/signout-oidc",
-                    PostLogoutRedirectUris = { "http://localhost:5001/signout-callback-oidc" },
+                    RedirectUris = { casaDoCodigoUrl + "/signin-oidc" },
+                    FrontChannelLogoutUri = casaDoCodigoUrl + "/signout-oidc",
+                    PostLogoutRedirectUris = { casaDoCodigoUrl + "/signout-callback-oidc" },
 
                     AllowOfflineAccess = true,
                     AllowedScopes = { "openid", "profile", "api1" }
@@ -83,6 +85,6 @@ namespace CasaDoCodigo.IdentityServer
                     AllowedScopes = { "openid", "profile", "api1" }
                 }
             };
-        }
     }
+  }
 }

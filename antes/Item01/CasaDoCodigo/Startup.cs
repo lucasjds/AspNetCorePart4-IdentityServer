@@ -113,7 +113,7 @@ namespace CasaDoCodigo
       .AddOpenIdConnect(options =>
       {
         options.SignInScheme = "Cookies";
-        options.Authority = "http://localhost:5000";
+        options.Authority = Configuration["CasaDoCodigoIdentityServiceUrl"];
         options.ClientId = "CasaDoCodigo.MVC";
         options.ClientSecret = "49C1A7E1-0C79-4A89-A3D6-A37998FB86B0";
         options.SaveTokens = true;
