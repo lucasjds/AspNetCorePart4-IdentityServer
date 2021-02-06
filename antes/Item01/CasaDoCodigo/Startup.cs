@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using System;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace CasaDoCodigo
 {
@@ -102,6 +103,8 @@ namespace CasaDoCodigo
       //        options.ClientId = Configuration["ExternalLogin:Google:ClientId"];
       //        options.ClientSecret = Configuration["ExternalLogin:Google:ClientSecret"];
       //    });
+      JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+
       services.AddAuthentication(options =>
       {
         //forma de autenticação local do usuário
