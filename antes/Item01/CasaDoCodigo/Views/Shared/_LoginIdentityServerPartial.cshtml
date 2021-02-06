@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
   string nomeUsuario = User.FindFirst("name")?.Value;
   var claims = User.Claims.ToList();
 
@@ -6,9 +6,18 @@
 
 @if (!string.IsNullOrEmpty(nomeUsuario))
 {
-  <div>Ola, @nomeUsuario<a>sair</a></div>
+  <ul class="nav navbar-nav navbar-right">
+    <li>
+      <a>Olá, @nomeUsuario !</a>
+    </li>
+    <li>
+      <button type="submit" class="btn btn-link navbar-btn navbar-link">Sair</button>
+    </li>
+  </ul>
 }
 else
 {
-  <div>Nenhum usuario concectado<a>entrar</a></div>
+  <ul class="nav navbar-nav navbar-right">
+    <li><a>Entrar</a></li>
+  </ul>
 }
