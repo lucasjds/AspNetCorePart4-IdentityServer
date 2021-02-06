@@ -6,18 +6,21 @@
 
 @if (!string.IsNullOrEmpty(nomeUsuario))
 {
-  <ul class="nav navbar-nav navbar-right">
-    <li>
-      <a>Olá, @nomeUsuario !</a>
-    </li>
-    <li>
-      <button type="submit" class="btn btn-link navbar-btn navbar-link">Sair</button>
-    </li>
-  </ul>
+  <form asp-controller="Conta" asp-action="Logout">
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a>Olá, @nomeUsuario !</a>
+      </li>
+      <li>
+        <button type="submit" class="btn btn-link navbar-btn navbar-link">Sair</button>
+      </li>
+    </ul>
+  </form>
+ 
 }
 else
 {
   <ul class="nav navbar-nav navbar-right">
-    <li><a>Entrar</a></li>
+    <li><a asp-controller="Conta" asp-action="Login">Entrar</a></li>
   </ul>
 }
