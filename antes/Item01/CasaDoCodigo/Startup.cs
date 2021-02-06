@@ -124,6 +124,7 @@ namespace CasaDoCodigo
         options.ResponseType = "code id_token";
         //código de autorização + token de identidade
         options.RequireHttpsMetadata = false;
+        options.GetClaimsFromUserInfoEndpoint = true;
       });
       services.AddHttpClient<IRelatorioHelper, RelatorioHelper>();
     }
