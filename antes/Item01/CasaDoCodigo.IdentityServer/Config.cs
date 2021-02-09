@@ -23,7 +23,7 @@ namespace CasaDoCodigo.IdentityServer
     {
       return new ApiResource[]
       {
-                new ApiResource("api1", "My API #1")
+                new ApiResource("CasaDoCodigo.Relatorio", "Serviço de relatorio")
       };
     }
 
@@ -82,7 +82,9 @@ namespace CasaDoCodigo.IdentityServer
                     PostLogoutRedirectUris = { "http://localhost:5002/index.html" },
                     AllowedCorsOrigins = { "http://localhost:5002" },
 
-                    AllowedScopes = { "openid", "profile", "api1" }
+                    AllowedScopes = { "openid", "profile", "CasaDoCodigo.Relatorio" }
+                    //OpenIdConnect =  "openid", "profile" (id_token)
+                    //OAuth = "CasaDoCodigo.Relatorio" (access_token)
                 }
             };
     }
