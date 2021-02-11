@@ -1,7 +1,9 @@
 ﻿using CasaDoCodigo.Models;
+using IdentityModel.Client;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -30,6 +32,26 @@ namespace CasaDoCodigo
 
       var json = JsonConvert.SerializeObject(linhaRelatorio);
       HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+      //descobrir o endereço (endpoint) do token de acesso
+      var discoveryResponse = await httpClient.GetDiscoveryDocumentAsync(configuration["CasaDoCodigoIdentityServerUrl"]);
+      if (discoveryResponse.IsError)
+      {
+        throw new ApplicationException(discoveryResponse.Error);
+      }
+      //solicitar o token de acesso
+      var tokenResponse = await httpClient.RequestClientCredentialsTokenAsync(
+        new ClientCredentialsTokenRequest { 
+          Address = discoveryResponse.TokenEndpoint,
+          ClientId = "CasaDoCodigo.MVC",
+          ClientSecret = "511536EF-F270-4058-80CA-1C89C192F69A",
+          Scope = "CasaDoCodigo.Relatorio",
+
+        });
+      if (tokenResponse.IsError)
+      {
+        Debug.WriteLine(tokenResponse.Error);
+        return;
+      }
       Uri baseUri = new Uri(configuration["RelatorioWebAPIURL"]);
       Uri uri = new Uri(baseUri, RelativeUri);
       HttpResponseMessage httpResponseMessage = await httpClient.PostAsync(uri, httpContent);
