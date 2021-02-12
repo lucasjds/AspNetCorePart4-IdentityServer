@@ -52,6 +52,7 @@ namespace CasaDoCodigo
         Debug.WriteLine(tokenResponse.Error);
         return;
       }
+      httpClient.SetBearerToken(tokenResponse.AccessToken);
       Uri baseUri = new Uri(configuration["RelatorioWebAPIURL"]);
       Uri uri = new Uri(baseUri, RelativeUri);
       HttpResponseMessage httpResponseMessage = await httpClient.PostAsync(uri, httpContent);

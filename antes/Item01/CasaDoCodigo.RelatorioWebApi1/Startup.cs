@@ -50,6 +50,7 @@ namespace CasaDoCodigo.RelatorioWebApi1
       }
 
       app.UseHttpsRedirection();
+      app.UseAuthentication();
       app.UseMvc();
     }
   }
